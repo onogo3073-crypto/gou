@@ -14,7 +14,7 @@ description: 狭山西武ボーイズの Instagram・Facebook に、Metricool �
 | Instagram | @sayamaseibuboys |
 | タイムゾーン | Asia/Tokyo |
 
-写真の受け渡し：Google Drive フォルダ「SNS投稿用（狭山西武ボーイズ）」（ID 1lNIfQw7mzgk10aQs5BB1iyeQrqUQDn2E）。代表がスマホから写真を入れたら、`search_files`（`parentId = 'フォルダID'`）で探し、そのファイルの Drive URL を `media` に渡します。
+写真の受け渡し：Google Drive フォルダ「SNS投稿用（狭山西武ボーイズ）」（ID 1lNIfQw7mzgk10aQs5BB1iyeQrqUQDn2E）。代表がスマホから写真を入れたら、`search_files`（`parentId = 'フォルダID'`）で探し、そのファイルの Drive URL（`https://drive.google.com/file/d/<ID>/view?usp=drivesdk`）を `media` に渡します。フォルダは「リンクを知っている全員（閲覧者）」で共有済み（2026-09-29）。共有していないと Metricool が「Failed to normalize media」で失敗します。
 
 使うツール：`getBrandSettings`（接続確認）→ `getBestTimeToPostByNetwork`（時間の提案）→ `createScheduledPost`（予約・下書き）→ `getScheduledPosts`（予約の確認）。
 

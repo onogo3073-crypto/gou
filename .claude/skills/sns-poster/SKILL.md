@@ -21,6 +21,7 @@ description: 狭山西武ボーイズの Instagram・Facebook に、Metricool �
 ## 投稿までの手順（毎回この順番）
 1. **素材を受け取る**：何を伝えるか・写真（公開URL または Google Drive のリンク）・投稿日時の希望。
    - チャットに貼られた画像は Metricool に直接渡せません。Google Drive の共有リンク等の URL を依頼します。
+   - Instagram フィードの画像は縦横比 4:5〜1.91:1 に限られます。スマホのスクリーンショット（約9:19.5）はそのままだと公開時にエラーになるため、4:5 にトリミングしてもらいます（Facebook はそのままで可）。
    - Instagram は画像か動画が必須です（下書きでも写真なしは受け付けられません）。写真がなければ Facebook のみにするか、写真を依頼します。
 2. **チェック**（1つでも引っかかれば投稿しません）
    - 選手の氏名・顔が分かる写真・学校名：`kyudan-assistant/references/team_profile.md` で掲載同意を確認します。未確認なら背番号や後ろ姿の写真に差し替えを提案します。
@@ -40,7 +41,8 @@ description: 狭山西武ボーイズの Instagram・Facebook に、Metricool �
    【チェック結果】個人情報：問題なし／事実確認：スコアは依頼者提供
    ```
 5. **承認後だけ予約します**：「投稿して」「OK」など明確な承認があった場合に `createScheduledPost` を実行します。承認がない段階では `draft: true`（Metricool 上の下書き）までにとどめます。
-6. **結果を報告**：予約日時と、Metricool で取り消す方法（予約一覧から削除）を伝えます。
+6. **公開後に確認**：公開時刻を過ぎたら `getScheduledPosts` で status が PUBLISHED か確認し、ERROR なら detailedStatus を代表に伝えます。
+7. **結果を報告**：予約日時と、Metricool で取り消す方法（予約一覧から削除）を伝えます。
 
 ## 投稿時間の目安（Metricool の推奨値、2026年9月27日取得）
 | 媒体 | 平日 | 土日 |

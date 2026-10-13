@@ -16,3 +16,10 @@ Claude Code でこのフォルダを開くと、以下のルールと `.claude/s
 5. 成果物は原則 Word で、`python3 tools/make_docx.py 入力.md output/出力.docx` で作成します（MSゴシック10pt・行間狭め・金額右寄せ・年度中央）。
 6. 出典が必要な事実には出典を併記します。不明な場合は「出典不明」と書きます。
 7. SNS への投稿・予約は、プレビューを見せて明確な承認を得てから実行します。承認前は下書き（draft）までです。
+
+## Codex との役割分担（codex@openai-codex プラグイン導入時）
+- 計画・設計・タスク分解・最終確認は Claude が担当します。
+- 実装、複数ファイルの修正、原因不明のバグ調査など負荷の高い作業は `/codex:rescue` で Codex へ委譲します。長い処理は `--background` でバックグラウンドへ回し、`/codex:status` で進捗、`/codex:result` で結果を確認します。
+- コードの通常チェックは `/codex:review`、設計や判断そのものを疑わせたいときは `/codex:adversarial-review` を使います（どちらもレビュー専用で、コードは修正しません）。
+- Codex の結果はそのまま採用せず、必ず Claude 自身でも確認してから統合します。
+- Codex が未認証のときは `!codex login`（ブラウザ不可なら `!codex login --device-auth`）を案内します。

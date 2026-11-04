@@ -12,4 +12,4 @@
 ## 収益化の仕組み
 - 方針：`docs/収益化戦略_2026-11.docx`（スポンサー協賛→選手募集→AI運営パッケージ外販の順）
 - 営業管理：`business/sponsor_pipeline.md`・`business/kpi.md`。「今週のスポンサー状況」と話しかけると次の行動を出します。
-- 提案書：`business/協賛提案書_ひな形_2027年度.docx`（「○○社向けに提案書を」で社名入りを作成）
+- 提案書：`python3 business/build_proposal.py` で作成（見本 `business/協賛提案書_2027年度_見本.docx`、振込先入りは `output/`）

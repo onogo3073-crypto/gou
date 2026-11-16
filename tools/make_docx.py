@@ -21,7 +21,8 @@ HEADER_FILL = "1F3864"
 ZEBRA_FILL = "EEF2F7"
 
 AMOUNT = re.compile(r"^[▲△\-+]?[¥￥]?\s*[\d,]+(\.\d+)?\s*(円|千円|万円|百万円|%|％|人|名|件|回)?$")
-YEAR = re.compile(r"^(\d{4}|令和\s*\d+|R\d+|平成\s*\d+)\s*(年度?|期)?(\s*\d{1,2}月(\d{1,2}日)?)?$")
+YEAR = re.compile(r"^(\d{4}|令和\s*\d+|R\d+|平成\s*\d+)\s*(年度?|期)?(\s*\d{1,2}月(\d{1,2}日)?)?([（(][^）)]*[）)])?$")
+DATE = re.compile(r"^\d{1,2}/\d{1,2}\s*([（(].[）)])?$")
 
 
 def set_font(run, bold=False, size=SIZE, color=None):
@@ -57,7 +58,7 @@ def shade(cell, fill):
 
 def cell_align(text):
     t = text.strip()
-    if YEAR.match(t):
+    if YEAR.match(t) or DATE.match(t):
         return WD_ALIGN_PARAGRAPH.CENTER
     if AMOUNT.match(t):
         return WD_ALIGN_PARAGRAPH.RIGHT
